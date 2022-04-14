@@ -1,0 +1,231 @@
+/* 要求适应视口 */
+.react-carousel_container { 
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+
+@media only screen and (max-width: 600px) {
+    .react-carousel_container {
+        background-color: red;
+    }
+}
+
+@media only screen and (min-width:600px) {
+    .react-carousel_container {
+
+        background-color: green;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    .react-carousel_container {
+        background-color: pink;
+
+    }    
+}
+
+.react-carousel_image-wrapper {
+    background-color: green;
+    position: absolute;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-around; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;   
+    background: center/cover no-repeat;
+    transform-style: preserve-3d;
+    transform: translate(0);
+}
+
+.react-carousel_image-wrapper>P {
+    /* flex: 1; */
+    font-size: large;
+}
+
+.react-carousel_image-wrapper>P:nth-child(2) {
+    font-size: larger;
+}
+
+.react-carousel_image-wrapper>.carousel_image {    
+    /* flex: 4; */
+    margin: 0 auto;
+    width: 100%;
+}
+
+.react-carousel_image-wrapper>.carousel_image>img {
+    width: 100%;
+}
+
+/* Navigation 前进,后退按钮 */
+.react-carousel_navigation-prev,
+.react-carousel_navigation-next {    
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 20px;
+    height: 20px;
+    margin-top: -15px;
+    transform: rotate(45deg);
+    border-width: 0;
+    border-style: solid;
+    border-color: #fff;
+    opacity: 0.6;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.react-carousel_navigation-prev:hover,
+.react-carousel_navigation-next:hover {
+    opacity: 1;
+}
+
+.react-carousel_navigation-prev {
+    left: 30px;
+    border-left-width: 5px;
+    border-bottom-width: 5px;
+}
+
+.react-carousel_navigation-next {
+    right: 30px;
+    border-top-width: 5px;
+    border-right-width: 5px;
+}
+
+/* Pagination 分页器 */
+.react-carousel_pagination-container {    
+    position: absolute;
+    bottom: 20px;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+}
+
+.react-carousel_pagination-bar {    
+    display: inline-block;
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    z-index: 0;
+}
+
+.react-carousel_pagination-item,
+.react-carousel_pagination-item-active {
+    display: inline-block;
+    width: 48px;
+    height: 5px;
+    margin: 0 10px;
+    border-radius: 6px;
+    background-color: #666;
+    cursor: pointer;
+    transition: all 0.25s;
+
+}
+
+.react-carousel_pagination-item-active {
+    position: relative;
+    width: 48px;
+    background-color: #333;
+}
+
+.react-carousel_pagination-item-active::before {
+    position: absolute;
+    content: " ";
+    width: 5px;
+    height: 5px;
+    border-radius: 2.5px;
+    transform: translate(-26px, 0);
+    background-color: #FFF;
+    animation-name: changeWidth;
+    animation-duration: 3s
+}
+
+@keyframes changeWidth {
+    from {
+        width: 0px;
+
+    }
+
+    to {
+        width: 49px;
+    }
+}
+
+/* Fade 过渡-渐隐 */
+.react-carousel_fade-enter {
+    opacity: 0;
+}
+
+.react-carousel_fade-enter-active {
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.react-carousel_fade-exit {
+    opacity: 1;
+}
+
+.react-carousel_fade-exit-active {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Slide 滑动 */
+.react-carousel_slide-wrap {    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* to left */
+
+.react-carousel_slide-to-left-enter {    
+    opacity: 0.8;
+    transform: translateX(100%);
+}
+
+.react-carousel_slide-to-left-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+}
+
+.react-carousel_slide-to-left-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.react-carousel_slide-to-left-exit-active {
+    opacity: 0.8;
+    transform: translateX(-100%);
+    transition: all 1s ease-in-out;
+}
+
+/* to right */
+
+.react-carousel_slide-to-right-enter {
+    opacity: 0.8;
+    transform: translateX(-100%);
+}
+
+.react-carousel_slide-to-right-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 1s ease-in-out;
+}
+
+.react-carousel_slide-to-right-exit {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.react-carousel_slide-to-right-exit-active {   
+    opacity: 0.8;
+    transform: translateX(100%);
+    transition: all 1s ease-in-out;
+}
